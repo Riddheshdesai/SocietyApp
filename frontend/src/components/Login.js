@@ -20,12 +20,12 @@ export default function Login() {
             });
           }
     
-          await axios.post("http://localhost:3000/login", {
+          await axios.post("/login", {
             mobile_number: mobileNumber,
             password,
           });
     
-          await axios.post("http://localhost:3000/send/otp", {
+          await axios.post("/send/otp", {
             mobile_number: mobileNumber,
           });
     

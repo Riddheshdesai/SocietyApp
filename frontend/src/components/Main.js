@@ -45,16 +45,16 @@ export default function Login() {
             <Link to="/exitlog">
             <div class="grid-item">
             <img className="" style={{width:"42px"}}  src={Exit} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Entry</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Exit</label>
             </div> </Link>
             <Link to="/viewlogs"> 
             <div class="grid-item">
             <img className="" style={{width:"42px"}}  src={View} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Entry</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">View Log</label>
             </div></Link> 
             <div class="grid-item" onClick={()=>logout()}>
             <img className="" style={{width:"42px"}}  src={Out} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Entry</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Logout</label>
             </div>
         </div>
 

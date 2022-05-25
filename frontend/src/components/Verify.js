@@ -20,7 +20,7 @@ export default function Login() {
             });
           }
     
-          await axios.post("http://localhost:3000/verify/otp", {
+          await axios.post("/verify/otp", {
             otp: Otp,
             mobile_number: location.state.mobile_number,
           });

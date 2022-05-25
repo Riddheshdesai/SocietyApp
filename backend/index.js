@@ -93,6 +93,6 @@ app.use("/", exit);
 const otp = require("./routers/otp");
 app.use("/", otp);
 
-app.listen(3000,()=>{
+app.listen(5000,()=>{
     console.log("started")
 })
