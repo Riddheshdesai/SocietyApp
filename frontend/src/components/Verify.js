@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import verify from "../Images/verify.png";
 
 
-export default function Login() {
+export default function Verify() {
     const history = useHistory();
     const location = useLocation();
     const [Otp, setOtp] = useState("");
@@ -25,7 +25,10 @@ export default function Login() {
             mobile_number: location.state.mobile_number,
           });
     
-          history.push("/main");
+          history.push({
+            pathname: '/main',
+            state: { mobile_number: location.state.mobile_number }
+          })
         } catch (error) {
           return toast.error(error.response.data.message, {
             position: toast.POSITION.TOP_CENTER,

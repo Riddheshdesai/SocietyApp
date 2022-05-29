@@ -4,28 +4,32 @@ const User = require("../models/userSchema");
 
 router.post("/entry", async (req, res) => {
   try {
-    const { user_name, society_name, entry, time } = req.body;
+    const { mobile_number, society_name, entry, time } = req.body;
 
-    if (!user_name || !society_name || !entry || !time) {
+    if (!mobile_number || !society_name || !entry || !time) {
       return res.status(401).json({ message: "All fields are mandatory" });
     }
 
     const log = {
-      user_name,
+      mobile_number,
       society_name,
       entry,
       time,
     };
 
-    const loginUser = await User.findOne({
+    const loginUser = await User.findOneAndUpdate({
       mobile_number: req.body.mobile_number,
-    });
+    },
+    {
+      $push: {
+        logs: log,
+      }
+    }
+    );
 
     if (!loginUser) {
       return res.status(401).json({ message: "Credintial Invalid" });
     }
-    User.logs.push(log)
-    await User.save();
     res.status(201).json({ message: "Entry success" });
   } catch (error) {
     console.log(error);

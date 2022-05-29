@@ -1,21 +1,24 @@
-import React, {  useState } from "react";
-import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link, useHistory, useLocation} from "react-router-dom";
 import { toast } from "react-toastify";
-import Main from "../Images/mainSun.png";
+import Mainimg from "../Images/mainSun.png";
 import Entry from "../Images/LogEntry.png";
 import Exit from "../Images/LogExit.png";
 import Out from "../Images/Logout.png";
 import View from "../Images/viewLog.png";
 
-export default function Login() {
+export default function Main() {
     const history = useHistory();
+    const location = useLocation();
     const logout = async () => {
         toast.success("Logout success", {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 3000,
         });
-        history.push("/login");
+        history.push({
+            pathname: '/login',
+            state: { mobile_number: location.state.mobile_number }
+          })
       };
 
   return (
@@ -28,7 +31,7 @@ export default function Login() {
                 </div>
                 <div className="col-7">
                     <div className="auth-sunimage">    
-                        <img className=""  style={{width:"125px",marginLeft:"30px"}}  src={Main} alt="" />
+                        <img className=""  style={{width:"125px",marginLeft:"30px"}}  src={Mainimg} alt="" />
                     </div>
                 </div>
             </div>
@@ -37,17 +40,32 @@ export default function Login() {
     <div className="login-middle verify-middle d-flex flex-column align-items-center justify-content-center" style={{zIndex:"100"}}>
         <div className="main-content">
         <div class="grid-container">
-            <Link to="/entrylog">
+            <Link to={{
+                pathname: "/entrylog", 
+                state: { 
+                    mobile_number: location.state.mobile_number
+                }
+            }}>
             <div class="grid-item">
             <img className="" style={{width:"42px"}}  src={Entry} alt="" />
             <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Entry</label>
             </div></Link>
-            <Link to="/exitlog">
+            <Link to={{
+                pathname: "/exitlog", 
+                state: { 
+                    mobile_number: location.state.mobile_number
+                }
+            }}>
             <div class="grid-item">
             <img className="" style={{width:"42px"}}  src={Exit} alt="" />
             <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Exit</label>
-            </div> </Link>
-            <Link to="/viewlogs"> 
+            </div> </Link> 
+            <Link to={{
+                pathname: "/viewlogs", 
+                state: { 
+                    mobile_number: location.state.mobile_number
+                }
+            }}>
             <div class="grid-item">
             <img className="" style={{width:"42px"}}  src={View} alt="" />
             <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">View Log</label>
@@ -61,7 +79,7 @@ export default function Login() {
         </div>
         <div style={{height:"500px"}} className="d-flex align-items-end">
         <div  className="authbottom-line mainline-bottom my-4">
-            <a href="">Designed and developed by SimplifyTech.in</a>
+            <a href="/">Designed and developed by SimplifyTech.in</a>
         </div>
         </div>
     </div>

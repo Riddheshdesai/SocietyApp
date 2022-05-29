@@ -1,19 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import React from "react";
 
-const ExitView = () => {
+const EntryView = ({viewLogs}) => {
+
 
   return (
-    <div className="log-card shadow d-flex align-items-center justify-content-between ">
-    <div className="log-details">
-    <label  className="text-center log-text ms-1" style={{fontSize:"16px" ,width:"auto", color:"#fff", fontWeight:"600"}}>Mr. Deepak Kanodia</label> <br />
-    <label  className="text-center log-text ms-1" style={{fontSize:"16px" ,width:"auto", color:"#fff", fontWeight:"600"}}>Esquire Society</label>
-    </div>
-    <div className="date-details">
-    <label  className="text-center date-text ms-1" style={{fontSize:"16px" ,width:"auto", color:"#fff", fontWeight:"600"}}>12.45 pm</label>
-    </div>
-    </div>
+    <>
+    {viewLogs.logs && viewLogs.logs.map(element => {
+      if(element.entry === "exit"){
+        return(
+        <div className="log-card shadow d-flex align-items-center justify-content-between mb-3" key={element._id}>
+        <div className="log-details">
+        <label  className="text-center log-text ms-1" style={{fontSize:"16px" ,width:"auto", color:"#fff", fontWeight:"600"}}>Mr. {viewLogs.name}</label> <br />
+        <label  className="text-center log-text ms-1" style={{fontSize:"16px" ,width:"auto", color:"#fff", fontWeight:"600"}}>{viewLogs.society}</label>
+        </div>
+        <div className="date-details">
+        <label  className="text-center date-text ms-1" style={{fontSize:"16px" ,width:"auto", color:"#fff", fontWeight:"600"}}>{element.time}</label>
+        </div>
+        </div>
+        )
+      }else{
+        return ""
+      }
+    })}
+    </>
   );
 };
 
-export default ExitView;
+export default EntryView;

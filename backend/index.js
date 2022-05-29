@@ -92,6 +92,8 @@ const exit = require("./routers/exit");
 app.use("/", exit);
 const otp = require("./routers/otp");
 app.use("/", otp);
+const getlogs = require("./routers/getlogs");
+app.use("/", getlogs);
 
 app.listen(5000,()=>{
     console.log("started")

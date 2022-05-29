@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
   },
   logs: [
     {
-      user_name: {
-        type: String,
+      mobile_number: {
+        type: Number
       },
       society_name: {
         type: String,
