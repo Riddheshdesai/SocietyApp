@@ -12,7 +12,8 @@ export default function ViewLogs() {
 
     useEffect( () => {
       getViewData()
-    }, [])
+    }, [])  
+
     const getViewData = async()=>{
       try{
         const mobileNumber = location.state.mobile_number
@@ -20,7 +21,6 @@ export default function ViewLogs() {
              mobile_number: mobileNumber
         });
         SetViewLogs(result.data)
-        console.log(result.data);
 
       }catch(error){
         console.log(error);

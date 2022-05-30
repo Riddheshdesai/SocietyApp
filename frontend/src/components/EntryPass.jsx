@@ -9,13 +9,13 @@ export default function EntryPass() {
   return (
     <div className="container-fluid p-0 auth-container">
         <div className="pass-con" style={{height:"650px"}}>
-            <div className="pass-image">
+            <div className="pass-image d-flex justify-content-center">
                 <img className=""  style={{width:"200px"}}  src={Mainimg} alt="" />
             </div>
-            <div className="pass-tittle">
+            <div className="pass-tittle d-flex justify-content-center">
               <h1>Warm welcome <br /> to Oberoi Esquire </h1>
             </div>
-            <div className="auth-btn-con d-flex flex-column btn-pass-con align-items-center justify-content-center">
+            <div className="auth-btn-con okay-btn d-flex flex-column btn-pass-con align-items-center justify-content-center">
             <Link to={{
                 pathname: "/main", 
                 state: { 

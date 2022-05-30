@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Link, useHistory, useLocation} from "react-router-dom";
 import { toast } from "react-toastify";
 import Mainimg from "../Images/mainSun.png";
@@ -6,10 +6,29 @@ import Entry from "../Images/LogEntry.png";
 import Exit from "../Images/LogExit.png";
 import Out from "../Images/Logout.png";
 import View from "../Images/viewLog.png";
+import axios from "axios";
 
 export default function Main() {
     const history = useHistory();
     const location = useLocation();
+    const [name, SetName] = useState("");
+
+    useEffect( () => {
+        getName()
+      }, [])
+      const getName = async()=>{
+        try{
+          const mobileNumber = location.state.mobile_number
+          const result = await axios.post("/viewlogs",{
+               mobile_number: mobileNumber
+          });
+          SetName(result.data.name)
+  
+        }catch(error){
+          console.log(error);
+        }
+      }
+
     const logout = async () => {
         toast.success("Logout success", {
             position: toast.POSITION.TOP_CENTER,
@@ -27,7 +46,7 @@ export default function Main() {
         <div className="auth-tittle">
             <div className="row">
                 <div className="col-5">
-                <p className="mb-0 auth-tittle ">Hello  Harshit</p> 
+                <p className="mb-0 auth-tittle ">Hello {name}</p> 
                 </div>
                 <div className="col-7">
                     <div className="auth-sunimage">    
@@ -39,16 +58,16 @@ export default function Main() {
     </div>
     <div className="login-middle verify-middle d-flex flex-column align-items-center justify-content-center" style={{zIndex:"100"}}>
         <div className="main-content">
-        <div class="grid-container">
+        <div className="grid-container">
             <Link to={{
                 pathname: "/entrylog", 
                 state: { 
                     mobile_number: location.state.mobile_number
                 }
             }}>
-            <div class="grid-item">
+            <div className="grid-item">
             <img className="" style={{width:"42px"}}  src={Entry} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Entry</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}}>Log Entry</label>
             </div></Link>
             <Link to={{
                 pathname: "/exitlog", 
@@ -56,9 +75,9 @@ export default function Main() {
                     mobile_number: location.state.mobile_number
                 }
             }}>
-            <div class="grid-item">
+            <div className="grid-item">
             <img className="" style={{width:"42px"}}  src={Exit} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Log Exit</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}}>Log Exit</label>
             </div> </Link> 
             <Link to={{
                 pathname: "/viewlogs", 
@@ -66,13 +85,13 @@ export default function Main() {
                     mobile_number: location.state.mobile_number
                 }
             }}>
-            <div class="grid-item">
+            <div className="grid-item">
             <img className="" style={{width:"42px"}}  src={View} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">View Log</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}}>View Log</label>
             </div></Link> 
-            <div class="grid-item" onClick={()=>logout()}>
+            <div className="grid-item" onClick={()=>logout()}>
             <img className="" style={{width:"42px"}}  src={Out} alt="" />
-            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}} For="varify">Logout</label>
+            <label  className="text-center log-text" style={{fontSize:"15px" ,width:"100%", color:"#fff", fontWeight:"500"}}>Logout</label>
             </div>
         </div>
 

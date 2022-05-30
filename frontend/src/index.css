@@ -263,16 +263,19 @@ button:focus{
   color: #FFFFFF;
 }
 .pass-image{
+  width: 100%;
   position: absolute;
   top: 110px;
-  left: 100px;
+  /* left: 100px; */
 }
 .pass-tittle{
-  padding-left: 55px;
+  width: 100%;
+  /* padding-left: 55px; */
   position: absolute;
   top: 250px;
   /* left: 100px; */
 }
+
 .pass-tittle h1{
   font-size: 42px;
   font-weight: 600;
@@ -283,7 +286,8 @@ button:focus{
 }
 
 .btn-pass-con{
+  width: 100%;
   position: absolute;
   bottom: 150px;
-  left: 46px;
+  /* left: 46px; */
 }
